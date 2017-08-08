@@ -4,7 +4,10 @@ Admin On Rest custom app tutorial: https://marmelab.com/admin-on-rest/Tutorial.h
 ----
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+I will use this as the baseline for the platform admin. The tutorial walkthrough will be committed under a branch 0-tutorial
 
+
+----
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
