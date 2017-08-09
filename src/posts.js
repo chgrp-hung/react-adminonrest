@@ -18,7 +18,7 @@ export const PostList = (props) => (
 );
 
 export const ResponsivePostList = (props) => (
-    <List {...props}>
+    <List {...props}  filters={<PostFilter />}>
       <Responsive
         small={
           <SimpleList
@@ -77,6 +77,8 @@ export const PostCreate = (props) => (
       <ReferenceInput lable="User" source="userId" reference="users" allowEmpty>
         <SelectInput optionText="name"/>
       </ReferenceInput>
+      <TextInput source="title" />
+      <TextInput source="body" />
     </SimpleForm>
   </Create>
 );
