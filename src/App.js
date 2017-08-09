@@ -12,7 +12,7 @@ import myApiRestClient from './restClient';
 
 // an Admin component can have one or more Resource compoents
 const App = () => (
-    <Admin authClient={authClient} restClient={myApiRestClient}>
+    <Admin authClient={authClient} restClient={jsonServerRestClient('http://jsonplaceholder.typicode.com')}>
         <Resource name="posts" list={ResponsivePostList} edit={PostEdit} create={PostCreate} remove={Delete} icon={PostIcon}/>
         <Resource name="users" list={UserList} icon={UserIcon} />
     </Admin>
