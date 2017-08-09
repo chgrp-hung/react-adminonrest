@@ -1,11 +1,11 @@
 import React from 'react';
 import { List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput } from 'admin-on-rest';
-import { Filter } from 'admin-on-rest';
+import { Filter, SimpleList, Responsive } from 'admin-on-rest';
 
 
 export const PostList = (props) => (
   <List {...props} filters={<PostFilter />}>
-    <Datagrid>
+    <SimpleList>
       <TextField source="id" />
       <ReferenceField label="User" source="userId" reference="users">
         <TextField source="name"/>
@@ -13,10 +13,46 @@ export const PostList = (props) => (
       <TextField source="title" />
       <TextField source="body" />
       <EditButton />
-    </Datagrid>
+    </SimpleList>
   </List>
 );
 
+export const ResponsivePostList = (props) => (
+    <List {...props}>
+      <Responsive
+        small={
+          <SimpleList
+            primaryText={record => record.title}
+            secondaryText={record => `${record.views} views`}
+            tertiaryText={record => new Date().toLocaleDateString()}
+          />
+        }
+        medium={
+          <Datagrid>
+            <TextField source="id"/>
+            <ReferenceField label="User" source="userId" reference="users">
+              <TextField source="name" />
+            </ReferenceField>
+            <TextField source="title" />
+            <TextField source="body" />
+          </Datagrid>
+        }
+      />
+    </List>
+);
+
+// The tutorial seems to think a post item from typicode has record.views, and record.published_at, but it does not
+// curl http://jsonplaceholder.typicode.com/posts/2 and see..
+// as a result this example will print out 'undefined' for views and published..
+export const SimplePostList = (props) => (
+    <List {...props}>
+    <SimpleList
+      primaryText={record => record.title}
+      secondaryText={record => `${record.views} views`}
+      tertiaryText={record => new Date(record.published_at).toLocaleDateString()}
+    />
+    </List>
+);
 
 const PostTitle = ({record}) => {
   return <span>Post {record}? `"${record.title}"` : ''}</span>

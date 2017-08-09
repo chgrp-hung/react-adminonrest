@@ -6,14 +6,14 @@ import UserIcon from 'material-ui/svg-icons/social/group';
 
 import authClient from './authClient';
 import Dashboard from './dashboard';
-import { PostList, PostEdit, PostCreate} from './posts';
+import { SimplePostList, ResponsivePostList, PostList, PostEdit, PostCreate} from './posts';
 import { UserList } from './users';
 
 
 // an Admin component can have one or more Resource compoents
 const App = () => (
     <Admin authClient={authClient} restClient={jsonServerRestClient('http://jsonplaceholder.typicode.com')}>
-        <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} remove={Delete} icon={PostIcon}/>
+        <Resource name="posts" list={ResponsivePostList} edit={PostEdit} create={PostCreate} remove={Delete} icon={PostIcon}/>
         <Resource name="users" list={UserList} icon={UserIcon} />
     </Admin>
 );
